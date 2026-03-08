@@ -143,6 +143,19 @@
         </main>
     </div>
 
+    <!-- MODAL SECTION -->
+     <div id="issueModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden scale-95 opacity-0 transition-all duration-300 transform" id="modalContainer">
+            <div class="p-10" id="modalBody">
+            </div>
+            <div class="bg-slate-50 p-6 flex justify-end border-t border-slate-100">
+                <button onclick="closeModal()" class="bg-[#4F46E5] text-white px-10 py-2.5 rounded-lg font-bold hover:bg-[#4338CA] transition-colors shadow-lg shadow-indigo-500/20">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
 
     <!-- JAVASCRIPT -->
     <script src="./script.js"></script>
