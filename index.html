@@ -74,7 +74,7 @@
 
     <!-- DASHBOARD PAGE -->
      <div id="dashboardPage" class="hidden min-h-screen">
-        <!-- NAVBAR -->
+        <!-- NAVBAR AREA-->
          <header class="bg-[#F8FAFC]/80 backdrop-blur-md sticky top-0 z-40 border-b border-slate-200">
             <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
                 <div class="flex items-center gap-2">
@@ -93,7 +93,18 @@
             </div>
         </header>
 
-        
+        <!-- MAIN AREA -->
+        <main class="max-w-7xl mx-auto px-6 py-8">
+            <!-- FILTER TABS FOR ALL / OPEN / CLOSED ISSUES -->
+            <div class="bg-white p-1.5 rounded-xl border border-slate-200 inline-flex mb-8 shadow-sm">
+                <button onclick="filterByStatus('all')" id="tab-all" class="px-8 py-2 rounded-lg text-sm font-semibold text-slate-500 active-tab transition-all">All</button>
+                <button onclick="filterByStatus('open')" id="tab-open" class="px-8 py-2 rounded-lg text-sm font-semibold text-slate-500 transition-all">Open</button>
+                <button onclick="filterByStatus('closed')" id="tab-closed" class="px-8 py-2 rounded-lg text-sm font-semibold text-slate-500 transition-all">Closed</button>
+            </div>
+
+        </main>
+
+
      </div>
 
 
