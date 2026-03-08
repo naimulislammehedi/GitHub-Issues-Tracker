@@ -73,9 +73,9 @@
     </div>
 
     <!-- DASHBOARD PAGE -->
-     <div id="dashboardPage" class="hidden min-h-screen">
+    <div id="dashboardPage" class="hidden min-h-screen">
         <!-- NAVBAR AREA-->
-         <header class="bg-[#F8FAFC]/80 backdrop-blur-md sticky top-0 z-40 border-b border-slate-200">
+        <header class="bg-[#F8FAFC]/80 backdrop-blur-md sticky top-0 z-40 border-b border-slate-200">
             <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
                 <div class="flex items-center gap-2">
                     <i class="fa-brands fa-github text-2xl"></i>
@@ -83,10 +83,14 @@
                 </div>
                 <div class="flex items-center gap-3">
                     <div class="relative">
-                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
-                        <input type="text" id="searchInput" onkeyup="if(event.key === 'Enter') handleSearch()" placeholder="Search issues..." class="pl-10 pr-4 py-2 bg-white border border-slate-200 rounded-md text-sm w-64 focus:outline-none focus:border-indigo-500 transition-colors">
+                        <i
+                            class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                        <input type="text" id="searchInput" onkeyup="if(event.key === 'Enter') handleSearch()"
+                            placeholder="Search issues..."
+                            class="pl-10 pr-4 py-2 bg-white border border-slate-200 rounded-md text-sm w-64 focus:outline-none focus:border-indigo-500 transition-colors">
                     </div>
-                    <button onclick="handleSearch()" class="bg-[#4F46E5] text-white px-4 py-2 rounded-md text-sm font-semibold hover:bg-[#4338CA] transition-colors">
+                    <button onclick="handleSearch()"
+                        class="bg-[#4F46E5] text-white px-4 py-2 rounded-md text-sm font-semibold hover:bg-[#4338CA] transition-colors">
                         Search
                     </button>
                 </div>
@@ -97,13 +101,17 @@
         <main class="max-w-7xl mx-auto px-6 py-8">
             <!-- FILTER TABS FOR ALL / OPEN / CLOSED ISSUES -->
             <div class="bg-white p-1.5 rounded-xl border border-slate-200 inline-flex mb-8 shadow-sm">
-                <button onclick="filterByStatus('all')" id="tab-all" class="px-8 py-2 rounded-lg text-sm font-semibold text-slate-500 active-tab transition-all">All</button>
-                <button onclick="filterByStatus('open')" id="tab-open" class="px-8 py-2 rounded-lg text-sm font-semibold text-slate-500 transition-all">Open</button>
-                <button onclick="filterByStatus('closed')" id="tab-closed" class="px-8 py-2 rounded-lg text-sm font-semibold text-slate-500 transition-all">Closed</button>
+                <button onclick="filterByStatus('all')" id="tab-all"
+                    class="px-8 py-2 rounded-lg text-sm font-semibold text-slate-500 active-tab transition-all">All</button>
+                <button onclick="filterByStatus('open')" id="tab-open"
+                    class="px-8 py-2 rounded-lg text-sm font-semibold text-slate-500 transition-all">Open</button>
+                <button onclick="filterByStatus('closed')" id="tab-closed"
+                    class="px-8 py-2 rounded-lg text-sm font-semibold text-slate-500 transition-all">Closed</button>
             </div>
 
             <!-- STATISTICS HEADER SHOWING TOTAL ISSUE COUNT AND COLOR INDICATORS -->
-             <div class="bg-white p-6 rounded-xl border border-slate-200 flex flex-col md:flex-row justify-between items-center mb-8 shadow-sm">
+            <div
+                class="bg-white p-6 rounded-xl border border-slate-200 flex flex-col md:flex-row justify-between items-center mb-8 shadow-sm">
                 <div class="flex items-center gap-4 mb-4 md:mb-0">
                     <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center">
                         <i class="fa-solid fa-circle-nodes text-xl"></i>
@@ -114,15 +122,26 @@
                     </div>
                 </div>
                 <div class="flex gap-6 text-[13px] font-bold text-slate-600">
-                    <span class="flex items-center gap-2"><div class="w-2.5 h-2.5 rounded-full bg-emerald-500"></div> Open</span>
-                    <span class="flex items-center gap-2"><div class="w-2.5 h-2.5 rounded-full bg-purple-500"></div> Closed</span>
+                    <span class="flex items-center gap-2">
+                        <div class="w-2.5 h-2.5 rounded-full bg-emerald-500"></div> Open
+                    </span>
+                    <span class="flex items-center gap-2">
+                        <div class="w-2.5 h-2.5 rounded-full bg-purple-500"></div> Closed
+                    </span>
                 </div>
             </div>
 
+            <!-- LOADING SPINNER -->
+            <div id="loadingState" class="hidden flex flex-col items-center justify-center py-20">
+                <div class="loader rounded-full border-4 border-slate-200 h-12 w-12 mb-4"></div>
+                <p class="text-slate-400 text-sm font-medium">Fetching issues...</p>
+            </div>
+
+            <!-- GRID CONTAINER -->
+             <div id="issueGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            </div>
         </main>
-
-
-     </div>
+    </div>
 
 
     <!-- JAVASCRIPT -->
