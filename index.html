@@ -7,15 +7,12 @@
     <title>GitHub Issues Tracker</title>
 
     <!-- LOAD TAILWIND CSS FOR STYLING, FONT AWESOME FOR ICONS, AND GOOGLE FONTS FOR INTER FONT -->
-    <!-- TAILWIND -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- FONTAWESOME -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
@@ -24,8 +21,9 @@
     <link rel="stylesheet" href="./CSS/style.css">
 </head>
 
-<body>
-    <!-- LOGIN PAGE -->
+<body class="text-slate-800">
+
+    <!-- ==================== LOGIN PAGE ==================== -->
     <div id="loginPage" class="min-h-screen flex items-center justify-center p-6">
         <div class="bg-white w-full max-w-[480px] rounded-2xl border border-slate-100 p-12 login-card text-center">
             <div class="flex justify-center mb-6">
@@ -35,19 +33,21 @@
             <p class="text-slate-400 text-sm mb-10">Sign in to manage your issues</p>
 
             <div class="text-left space-y-5">
+                <!-- Step 4: Username input field -->
                 <div>
                     <label class="block text-[13px] font-semibold text-slate-700 mb-2">Username</label>
                     <input type="text" id="userInput" placeholder="Enter Username"
                         class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all">
-                    <p class="text-[11px] text-[#4A00FF] mt-1.5 font-medium">Default: admin</p>
+                    <p class="text-[11px] text-indigo-600 mt-1.5 font-medium">Default: admin</p>
                 </div>
+                <!-- Step 5: Password input field -->
                 <div>
                     <label class="block text-[13px] font-semibold text-slate-700 mb-2">Password</label>
                     <input type="password" id="passInput" placeholder="Enter Password"
                         class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all">
-                    <p class="text-[11px] text-[#4A00FF] mt-1.5 font-medium">Default: admin123</p>
+                    <p class="text-[11px] text-indigo-600 mt-1.5 font-medium">Default: admin123</p>
                 </div>
-
+                <!-- Step 6: Login button triggers handleLogin() -->
                 <button onclick="handleLogin()"
                     class="w-full bg-[#4F46E5] hover:bg-[#4338CA] text-white font-bold py-3.5 rounded-lg transition-colors mt-4">
                     Sign In
@@ -62,6 +62,7 @@
                         class="px-4 bg-white text-slate-400 font-bold">OR</span></div>
             </div>
 
+            <!-- Step 7: Demo credentials hint -->
             <div class="bg-slate-50 rounded-xl p-6 border border-slate-100">
                 <p class="text-[12px] text-slate-400 mb-3 font-medium">Demo Credentials:</p>
                 <div class="space-y-1">
@@ -72,9 +73,9 @@
         </div>
     </div>
 
-    <!-- DASHBOARD PAGE -->
+    <!-- ==================== STEP 8: DASHBOARD PAGE (hidden initially) ==================== -->
     <div id="dashboardPage" class="hidden min-h-screen">
-        <!-- NAVBAR AREA-->
+        <!-- Navbar with sticky header, search input and button -->
         <header class="bg-[#F8FAFC]/80 backdrop-blur-md sticky top-0 z-40 border-b border-slate-200">
             <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
                 <div class="flex items-center gap-2">
@@ -85,6 +86,7 @@
                     <div class="relative">
                         <i
                             class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                        <!-- Step 9: Search input – pressing Enter triggers handleSearch() -->
                         <input type="text" id="searchInput" onkeyup="if(event.key === 'Enter') handleSearch()"
                             placeholder="Search issues..."
                             class="pl-10 pr-4 py-2 bg-white border border-slate-200 rounded-md text-sm w-64 focus:outline-none focus:border-indigo-500 transition-colors">
@@ -97,9 +99,8 @@
             </div>
         </header>
 
-        <!-- MAIN AREA -->
         <main class="max-w-7xl mx-auto px-6 py-8">
-            <!-- FILTER TABS FOR ALL / OPEN / CLOSED ISSUES -->
+            <!-- Step 10: Filter tabs for All / Open / Closed issues -->
             <div class="bg-white p-1.5 rounded-xl border border-slate-200 inline-flex mb-8 shadow-sm">
                 <button onclick="filterByStatus('all')" id="tab-all"
                     class="px-8 py-2 rounded-lg text-sm font-semibold text-slate-500 active-tab transition-all">All</button>
@@ -109,7 +110,7 @@
                     class="px-8 py-2 rounded-lg text-sm font-semibold text-slate-500 transition-all">Closed</button>
             </div>
 
-            <!-- STATISTICS HEADER SHOWING TOTAL ISSUE COUNT AND COLOR INDICATORS -->
+            <!-- Step 11: Statistics header showing total issue count and color indicators -->
             <div
                 class="bg-white p-6 rounded-xl border border-slate-200 flex flex-col md:flex-row justify-between items-center mb-8 shadow-sm">
                 <div class="flex items-center gap-4 mb-4 md:mb-0">
@@ -131,33 +132,35 @@
                 </div>
             </div>
 
-            <!-- LOADING SPINNER -->
+            <!-- Loading spinner -->
             <div id="loadingState" class="hidden flex flex-col items-center justify-center py-20">
                 <div class="loader rounded-full border-4 border-slate-200 h-12 w-12 mb-4"></div>
                 <p class="text-slate-400 text-sm font-medium">Fetching issues...</p>
             </div>
 
-            <!-- GRID CONTAINER -->
-             <div id="issueGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Grid container where issue cards will be injected dynamically -->
+            <div id="issueGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             </div>
         </main>
     </div>
 
-    <!-- MODAL SECTION -->
-     <div id="issueModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden scale-95 opacity-0 transition-all duration-300 transform" id="modalContainer">
+    <!-- ==================== MODAL for detailed issue view ==================== -->
+    <div id="issueModal"
+        class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden scale-95 opacity-0 transition-all duration-300 transform"
+            id="modalContainer">
             <div class="p-10" id="modalBody">
+                
             </div>
             <div class="bg-slate-50 p-6 flex justify-end border-t border-slate-100">
-                <button onclick="closeModal()" class="bg-[#4F46E5] text-white px-10 py-2.5 rounded-lg font-bold hover:bg-[#4338CA] transition-colors shadow-lg shadow-indigo-500/20">
+                <button onclick="closeModal()"
+                    class="bg-[#4F46E5] text-white px-10 py-2.5 rounded-lg font-bold hover:bg-[#4338CA] transition-colors shadow-lg shadow-indigo-500/20">
                     Close
                 </button>
             </div>
         </div>
     </div>
 
-
-    <!-- JAVASCRIPT -->
     <script src="./script.js"></script>
 </body>
 
